@@ -2,3 +2,17 @@
 Made repository, shared with each and every one of the project members
 Added Journals Directory
 Added Images DIrectory
+
+3/29/2021
+Uploaded various images with no background
+Next Steps:
+     - Incorporate Scenes & Igis
+     - Create structure/class for images to be processed
+
+Future Plans:
+     - Have buttons to change background & cycle through images
+     - Have various backgrounds (animated, solid colors, realistic backgrounds)
+
+Down the Road Ideas:
+     - Match lighting across faces and clothes
+     - Be able to live import images and export them as different files/filetypes
