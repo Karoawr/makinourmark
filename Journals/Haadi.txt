@@ -16,3 +16,16 @@ Future Plans:
 Down the Road Ideas:
      - Match lighting across faces and clothes
      - Be able to live import images and export them as different files/filetypes
+
+3/31
+Accomplished Today:
+     - Incorporated Scenes and Igis Skeleton into project
+     - Created FancyPicture class and began work on data to be stored
+     - Made a really pretty google sheets and added to Read.Me
+
+Next Steps:
+     - Be able to render image. Will require:
+         > Main file where fancyPicture instances are created and stored
+	 > Add to list of available colors for static backgrounds
+	 > Define shape which background will occupy
+	 > Hopefully center images by default and provide way to alter position

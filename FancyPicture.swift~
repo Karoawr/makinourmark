@@ -1,0 +1,14 @@
+import Scenes
+import Igis
+
+class FancyPicture : RenderableEntity{
+    var static solidBackgrounds = [Color()]()
+    var static gradientBackgrounds = [Gradient()]()
+    var static imageBackgrounds = [Image()]()
+    let rawPicture : Image()
+
+    init(pic: Image()){
+        rawPicture = pic
+    }
+    
+}
