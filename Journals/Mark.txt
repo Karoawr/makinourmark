@@ -5,3 +5,17 @@ Update: Week 1
 - Plan on making original graphics (minimalistic)
 - Next steps: Begin research, create overall outline.
 
+--------------------------------------------------------------------
+
+Current Plans: 3/29
+- Priority: Moving background with customizable colors
+- Make classes for image types
+- Re-render immag after each modification to the background
+- Potentially have changing backgrounds affecting shading of person in portrait
+- Import Scenes & Igis
+
+Journal Entry: 3/31
+- Began coding classes for the images
+- Solidified preliminary plans
+- Formatted google folder & sheets with features
+- Removed backgrounds & upscaled more pictures (3/29-3/30)
