@@ -19,3 +19,7 @@ Journal Entry: 3/31
 - Solidified preliminary plans
 - Formatted google folder & sheets with features
 - Removed backgrounds & upscaled more pictures (3/29-3/30)
+
+Journal Entry: 4/13
+- Bug fixes with high-res images
+- Finished upscaling and sharing images
