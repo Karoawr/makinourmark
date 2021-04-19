@@ -23,3 +23,7 @@ Journal Entry: 3/31
 Journal Entry: 4/13
 - Bug fixes with high-res images
 - Finished upscaling and sharing images
+
+Journal Enrty: 4/19
+- We made another speed presentation over our tech
+- It was interesting to see how much art could come out of such simple applications
