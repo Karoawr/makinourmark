@@ -14,6 +14,8 @@ class Pics : RenderableEntity {
     let riley : Image
     let younger : Image
     var all = [FancyPicture]()
+    var buffer = 0
+    var curFill = FillStyle(color:Color(.white))
 
     init(){
         brian = Image(sourceURL:URL(string:"https://raw.githubusercontent.com/Karoawr/makinourmark/main/Images/No_Background/brain_NB.png?token=AKKRVYEGB7YERYEY35R5ELTAS6YTE")!)
@@ -30,7 +32,7 @@ class Pics : RenderableEntity {
 
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(brian);
-        if canvasSize.width < 532 {
+  /*      if canvasSize.width < 532 {
             let changeRatio = Double(canvasSize.width)/(532.0)
             brian.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:canvasSize.width, height:Int(changeRatio*1017.0))))
             }
@@ -38,6 +40,8 @@ class Pics : RenderableEntity {
             let changeRatio = Double(canvasSize.height)/(1017.0)
             brian.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:Int(changeRatio*532.0), height:canvasSize.height)))
         }
+        
+   */
         var brianFP = FancyPicture(pic:brian);
         all.append(brianFP)
         
@@ -78,6 +82,10 @@ class Pics : RenderableEntity {
         all.append(youngerFP)
                 
         addSolids()
+        addGradients()
+        for gradient in FancyPicture.gradientBackgrounds{
+            canvas.setup(gradient)
+        }
     }
 
     func randomColor() -> Color{
@@ -90,13 +98,32 @@ class Pics : RenderableEntity {
         }
     }
 
-    override func render(canvas:Canvas){
-        canvas.render(Rectangle(rect:Rect(topLeft:Point(x:0, y:0), size:canvas.canvasSize!), fillMode:.fill))
-        canvas.render(FillStyle(color:FancyPicture.solidBackgrounds.randomElement()!))
+    func addGradients(){
+        for _ in 0 ..< 10{
+            let gradient = Gradient(mode:Gradient.Mode.linear(start:Point(), end:Point(x:2000,y:3000)))
+            gradient.addColorStop(ColorStop(position:0.0, color:randomColor()))
+            gradient.addColorStop(ColorStop(position:1.0, color:randomColor()))
+            FancyPicture.addGradientBackground(gradient:gradient)
+        }
+    }
 
+    override func render(canvas:Canvas){
+        buffer += 1
+        if buffer == 50{
+            buffer = 0
+            switch Int.random(in:0...1){
+            case 0: curFill = FillStyle(color:FancyPicture.solidBackgrounds.randomElement()!)
+            case 1: curFill = FillStyle(gradient:FancyPicture.gradientBackgrounds.randomElement()!)
+            default: let _ = 0
+            }
+        }
+        canvas.render(curFill)
+        canvas.render(Rectangle(rect:Rect(topLeft:Point(x:0, y:0), size:canvas.canvasSize!), fillMode:.fill))
+    
+        let temp = all.randomElement()!
         let canvasSize = canvas.canvasSize!
 
-        
+/*        
         if brian.isReady {
             if canvasSize.width < 532 {
                 let changeRatio = Double(canvasSize.width)/(532.0)
@@ -107,7 +134,7 @@ class Pics : RenderableEntity {
                 brian.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:Int(changeRatio*532.0), height:canvasSize.height)))
             }
         }
-        /*
+  
         if canvasSize.width < 1234 {
             let changeRatio = Double(canvasSize.width)/(1234.0)
             christina.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:canvasSize.width, height:Int(changeRatio*1932.0))))
@@ -185,7 +212,7 @@ class Pics : RenderableEntity {
          */
 
         
-        let temp = all.randomElement()!
+        
         if temp.rawPicture.isReady {canvas.render(temp.rawPicture)}
         
     }
