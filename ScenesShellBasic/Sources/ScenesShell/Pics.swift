@@ -16,6 +16,7 @@ class Pics : RenderableEntity {
     var all = [FancyPicture]()
     var buffer = 0
     var curFill = FillStyle(color:Color(.white))
+    var temp : Image? = nil
 
     init(){
         brian = Image(sourceURL:URL(string:"https://raw.githubusercontent.com/Karoawr/makinourmark/main/Images/No_Background/brain_NB.png?token=AKKRVYEGB7YERYEY35R5ELTAS6YTE")!)
@@ -32,16 +33,6 @@ class Pics : RenderableEntity {
 
     override func setup(canvasSize:Size, canvas:Canvas) {
         canvas.setup(brian);
-  /*      if canvasSize.width < 532 {
-            let changeRatio = Double(canvasSize.width)/(532.0)
-            brian.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:canvasSize.width, height:Int(changeRatio*1017.0))))
-            }
-        if canvasSize.height < 1017 {
-            let changeRatio = Double(canvasSize.height)/(1017.0)
-            brian.renderMode = .destinationRect(Rect(topLeft:Point(), size:Size(width:Int(changeRatio*532.0), height:canvasSize.height)))
-        }
-        
-   */
         var brianFP = FancyPicture(pic:brian);
         all.append(brianFP)
         
@@ -116,14 +107,20 @@ class Pics : RenderableEntity {
             case 1: curFill = FillStyle(gradient:FancyPicture.gradientBackgrounds.randomElement()!)
             default: let _ = 0
             }
+            temp = all.randomElement()!.rawPicture
         }
         canvas.render(curFill)
         canvas.render(Rectangle(rect:Rect(topLeft:Point(x:0, y:0), size:canvas.canvasSize!), fillMode:.fill))
     
-        let temp = all.randomElement()!
+        if temp != nil{
+            print(temp!.isReady)
+            if temp!.isReady{
+                canvas.render(temp!)
+            }
+        }
         let canvasSize = canvas.canvasSize!
 
-/*        
+        /*        
         if brian.isReady {
             if canvasSize.width < 532 {
                 let changeRatio = Double(canvasSize.width)/(532.0)
@@ -212,8 +209,6 @@ class Pics : RenderableEntity {
          */
 
         
-        
-        if temp.rawPicture.isReady {canvas.render(temp.rawPicture)}
         
     }
     
